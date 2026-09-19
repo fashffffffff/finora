@@ -1,0 +1,38 @@
+[package]
+name = "app"
+version = "0.1.0"
+description = "A Tauri App"
+authors = ["you"]
+license = ""
+repository = ""
+edition = "2021"
+rust-version = "1.77.2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.6.3", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.11.3", features = [] }
+tauri-plugin-log = "2"
+
+# Локальная AI-модель (этап 3): llama.cpp с Metal, откат на CPU;
+# скачивание GGUF с прогрессом
+llama-cpp-2 = "0.1.156"
+llama-cpp-sys-2 = { version = "0.1.156", features = ["metal"] }
+reqwest = { version = "0.12", default-features = false, features = ["stream", "native-tls"] }
+futures-util = "0.3"
+
+# Свежий llama.cpp вместо сентябрьского из крейса: иначе GGUF от
+# современных конвертеров (qwen35) грузится с мусорной генерацией.
+# Вендорный крейс с подменённым llama.cpp лежит в ai-training/vendor.
+[patch.crates-io]
+llama-cpp-sys-2 = { path = "../../ai-training/vendor/llama-cpp-sys-2" }

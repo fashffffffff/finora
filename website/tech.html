@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Технологии — Finora</title>
+  <meta name="description" content="Архитектура Finora: Rust-ядро на Tauri, интерфейс на чистом TypeScript, слои данных и подключаемые банковские провайдеры и классификаторы." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='9' fill='%231f1a12' stroke='%23d4a542' stroke-width='2'/%3E%3Cg fill='%23d4a542'%3E%3Cpath d='M8 17.2h6.4l1.3 3.8H6.7z'/%3E%3Cpath d='M17.6 17.2h6.4l1.3 3.8H16.3z'/%3E%3Cpath d='M12.8 10.4h6.4l1.3 3.8H11.5z'/%3E%3C/g%3E%3C/svg%3E" />
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap header-in">
+    <a class="brand" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect x="1.5" y="1.5" width="29" height="29" rx="9" fill="#1f1a12" stroke="#d4a542" stroke-width="1.8"/><g fill="#d4a542"><path d="M8 17.2h6.4l1.3 3.8H6.7z"/><path d="M17.6 17.2h6.4l1.3 3.8H16.3z"/><path d="M12.8 10.4h6.4l1.3 3.8H11.5z"/></g></svg>
+      Finora
+    </a>
+    <button class="burger" aria-label="Меню" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav-links">
+      <a href="index.html#problem">Проблема</a>
+      <a href="index.html#how">Как работает</a>
+      <a href="index.html#interface">Интерфейс</a>
+      <a href="../app/dist/index.html" target="_blank" rel="noopener">Прототип</a>
+      <a href="privacy.html">Приватность</a>
+      <a href="tech.html">Технологии</a>
+      <a class="nav-dl" href="downloads/Finora.dmg" download><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v10.5M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg> Скачать для Mac</a>
+      </nav>
+    <a class="btn btn-primary btn-sm header-cta" href="downloads/Finora.dmg" download title="Скачать установщик для macOS"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v10.5M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg> Скачать для Mac</a>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <span class="sec-eyebrow reveal">Технологии</span>
+    <h1 class="reveal">Слои вместо монолита</h1>
+    <p class="sec-sub reveal d1">Каждый слой отвечает за своё и заменяется без переделки соседних. Настоящий банк, локальный AI, другие банки — всё это подключаемые модули, а не переписывание с нуля.</p>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+
+    <h2 class="reveal" style="font-size:24px">Конвейер данных</h2>
+    <div class="arch">
+      <div class="arch-row">
+        <div class="arch-box">
+          <b>BankDataProvider</b>
+          <span>источник операций</span>
+          <span class="now">MockBankProvider</span>
+        </div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-box">
+          <b>Normalizer</b>
+          <span>единый формат, типы, переводы между счетами</span>
+        </div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-box">
+          <b>TransactionRepository</b>
+          <span>локальное хранилище</span>
+        </div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-box">
+          <b>TransactionClassifier</b>
+          <span>категории операций</span>
+          <span class="now">RuleBased · сейчас</span>
+        </div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-box">
+          <b>Analytics</b>
+          <span>сводки, динамика, наблюдения</span>
+        </div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-box">
+          <b>UI</b>
+          <span>экраны, графики, цели</span>
+        </div>
+      </div>
+      <div class="arch-row swap">
+        <div class="arch-box future">
+          <b>TBankProvider</b>
+          <span>реальные операции Т-Банка</span>
+          <span class="plan">этап 2</span>
+        </div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-box future">
+          <b>LocalAIClassifier</b>
+          <span>Qwen3.5-4B на llama.cpp, на этом Mac</span>
+          <span class="plan">этап 3</span>
+        </div>
+        <span class="arch-arrow">→</span>
+        <div class="arch-box future" style="opacity:0.75">
+          <b>RemoteAIClassifier</b>
+          <span>отключён политикой приватности</span>
+          <span class="plan">навсегда выкл.</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="reveal" style="font-size:24px;margin-top:70px">Стек</h2>
+    <div class="doc-grid">
+      <div class="doc-card reveal">
+        <h3>Приложение</h3>
+        <ul class="doc-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Tauri 2 + Rust (Cargo)</b> — нативная оболочка macOS, лёгкая и быстрая</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>TypeScript без фреймворков</b> — Vite, свои компоненты, свой роутер</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Свои SVG-графики</b> — донаты, столбцы, спарклайны без библиотек</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Шрифты</b> — Onest, Unbounded, JetBrains Mono (кириллица)</span></li>
+        </ul>
+      </div>
+      <div class="doc-card reveal d1">
+        <h3>Дальше</h3>
+        <ul class="doc-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Rust-ядро</b> — получение выписок и локальная БД (SQLite)</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Ollama</b> — локальные LLM на Apple Silicon для классификации и советов</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><b>Другие банки</b> — новый провайдер = один класс + конфиг</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="reveal" id="roadmap" style="font-size:24px;margin-top:70px">Дорожная карта</h2>
+    <div class="road">
+      <div class="road-item done reveal">
+        <span class="road-dot"></span>
+        <span class="road-when">этап 1 · сейчас</span>
+        <h3>Прототип</h3>
+        <p>Интерактивный UI со всеми экранами, год синтетических операций, правила классификации, цели и настройки тем.</p>
+      </div>
+      <div class="road-item now reveal d1">
+        <span class="road-dot"></span>
+        <span class="road-when">этап 2</span>
+        <h3>Реальный банк</h3>
+        <p>TBankProvider на Rust-ядре: безопасное получение операций выбранным способом, авто-синхронизация, локальная БД вместо хранилища прототипа.</p>
+      </div>
+      <div class="road-item reveal d2">
+        <span class="road-dot"></span>
+        <span class="road-when">этап 3</span>
+        <h3>Локальный AI</h3>
+        <p>Уже работает: llama.cpp внутри нативной оболочки исполняет модель Qwen3.5-4B — она докачивается одной кнопкой из настроек и отвечает прямо на Mac. Чат-советник с фактами из ваших данных, советы по целям, свободный разговор.</p>
+      </div>
+      <div class="road-item reveal d3">
+        <span class="road-dot"></span>
+        <span class="road-when">этап 4</span>
+        <h3>Другие банки</h3>
+        <p>Расширение библиотеки провайдеров. Контракт BankProvider уже описан — каждый новый банк это изолированный модуль.</p>
+      </div>
+    </div>
+
+    <div class="cta-band reveal" style="margin-top:60px">
+      <div>
+        <h2>Обсудить проект</h2>
+        <p>Расскажу про архитектуру, покажу прототип вживую или отвечу на вопросы — пишите на почту или в Telegram.</p>
+      </div>
+      <a class="btn" href="mailto:dinar.rahmatulin2001@gmail.com">Написать автору</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="margin-top:0;padding-top:0;border-top:0">
+      <span>© 2026 Finora · Рахматуллин Динар, ИУ5 · МГТУ им. Н.Э. Баумана</span>
+      <span><a href="index.html" style="color:var(--accent)">На главную</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

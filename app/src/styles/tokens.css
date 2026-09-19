@@ -1,0 +1,184 @@
+/* ============================================================
+   Finora — дизайн-токены
+   4 заводских пресета: Полночь (тёмный, по умолчанию), Графит,
+   Тайга, Бумага (светлый). Плюс слой пользовательской настройки:
+   --accent, --rs (скругления), --du (плотность), data-tone (фон).
+   ============================================================ */
+
+:root {
+  --font-ui: 'Onest Variable', -apple-system, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Unbounded Variable', var(--font-ui);
+  --font-mono: 'JetBrains Mono Variable', 'SF Mono', ui-monospace, Menlo, monospace;
+
+  /* Кастомизация (переопределяются из Настроек) */
+  --accent-user: initial;
+  --accent-ink-user: initial;
+  --rs: 1;   /* множитель скруглений, 0.6–1.5 */
+  --du: 1;   /* плотность: 1 — просторная, 0.8 — компактная */
+
+  --r-xs: calc(8px * var(--rs));
+  --r-sm: calc(10px * var(--rs));
+  --r-md: calc(14px * var(--rs));
+  --r-lg: calc(18px * var(--rs));
+  --r-xl: calc(24px * var(--rs));
+
+  --sp-1: calc(8px * var(--du));
+  --sp-2: calc(12px * var(--du));
+  --sp-3: calc(16px * var(--du));
+  --sp-4: calc(20px * var(--du));
+  --sp-5: calc(28px * var(--du));
+  --sp-6: calc(40px * var(--du));
+
+  /* Типографика (Compact — плотный финансовый интерфейс) */
+  --fs-display: 30px;
+  --fs-h1: 22px;
+  --fs-h2: 17px;
+  --fs-h3: 15px;
+  --fs-body: 14px;
+  --fs-caption: 12.5px;
+  --fs-micro: 11px;
+
+  --ease-out: cubic-bezier(0.22, 0.61, 0.21, 1);
+  --ease-spring: cubic-bezier(0.3, 1.2, 0.4, 1);
+  --t-fast: 140ms;
+  --t-med: 220ms;
+  --t-slow: 380ms;
+}
+
+/* ---------- Пресет 1: Слиток (тёмный тёплый + золото, по умолчанию) ---------- */
+[data-preset='ingot'] {
+  --bg: #171410;
+  --surface: #1a1713;
+  --surface-2: #201d17;
+  --surface-3: #272218;
+  --border: #2e2820;
+  --border-strong: #3d3527;
+  --text: #efe9dd;
+  --text-2: #b0a690;
+  --text-3: #7a7060;
+  --accent: #d4a542;
+  --accent-ink: #241a04;
+  --income: #8fba72;
+  --expense: #e0705e;
+  --warn: #d4a542;
+  --info: #8ba3c9;
+  --skeleton: #232017;
+  --overlay: rgba(10, 8, 5, 0.66);
+  --shadow-1: 0 1px 2px rgba(6, 4, 2, 0.45);
+  --shadow-2: 0 6px 18px rgba(6, 4, 2, 0.5);
+  --shadow-3: 0 18px 44px rgba(6, 4, 2, 0.65);
+  --scroll-thumb: #3a3325;
+}
+[data-preset='ingot'][data-tone='1'] {
+  --bg: #13110d; --surface: #1a1712; --surface-2: #201c15; --surface-3: #262218; --border: #2d2719; --skeleton: #221e15;
+}
+[data-preset='ingot'][data-tone='2'] {
+  --bg: #1c1813; --surface: #241f17; --surface-2: #2a251b; --surface-3: #312b1d; --border: #383120; --skeleton: #2b251a;
+}
+
+/* ---------- Пресет 2: Полночь (тёмный, холодный) ---------- */
+[data-preset='midnight'] {
+  --bg: #0e1418;
+  --surface: #151d23;
+  --surface-2: #1a242c;
+  --surface-3: #202c36;
+  --border: #26323c;
+  --border-strong: #33424e;
+  --text: #e9eef2;
+  --text-2: #9db0bc;
+  --text-3: #64757f;
+  --accent: #45c4b0;
+  --accent-ink: #06231e;
+  --income: #4cc38a;
+  --expense: #f0716a;
+  --warn: #e2a548;
+  --info: #6c9bd1;
+  --skeleton: #1c2730;
+  --overlay: rgba(6, 10, 13, 0.62);
+  --shadow-1: 0 1px 2px rgba(3, 8, 12, 0.4);
+  --shadow-2: 0 6px 18px rgba(3, 8, 12, 0.45);
+  --shadow-3: 0 18px 44px rgba(3, 8, 12, 0.6);
+  --scroll-thumb: #2c3a45;
+}
+[data-preset='midnight'][data-tone='1'] {
+  --bg: #0b1013; --surface: #121a1f; --surface-2: #172027; --surface-3: #1d2830; --border: #232e37; --skeleton: #19232b;
+}
+[data-preset='midnight'][data-tone='2'] {
+  --bg: #131b21; --surface: #1a242c; --surface-2: #202b34; --surface-3: #26333e; --border: #2d3b47; --skeleton: #212d37;
+}
+
+/* ---------- Пресет 3: Тайга (тёмный, зелёный) ---------- */
+[data-preset='taiga'] {
+  --bg: #0e1512;
+  --surface: #141f1a;
+  --surface-2: #1a2620;
+  --surface-3: #203028;
+  --border: #29382f;
+  --border-strong: #364a3d;
+  --text: #e8f0ea;
+  --text-2: #9ab0a2;
+  --text-3: #65796c;
+  --accent: #5fc793;
+  --accent-ink: #04231652;
+  --income: #62c68f;
+  --expense: #ee7c6f;
+  --warn: #ddb054;
+  --info: #7fa8c9;
+  --skeleton: #1b2822;
+  --overlay: rgba(5, 11, 8, 0.62);
+  --shadow-1: 0 1px 2px rgba(3, 9, 6, 0.4);
+  --shadow-2: 0 6px 18px rgba(3, 9, 6, 0.45);
+  --shadow-3: 0 18px 44px rgba(3, 9, 6, 0.6);
+  --scroll-thumb: #2f4034;
+}
+[data-preset='taiga'][data-tone='1'] {
+  --bg: #0b110e; --surface: #111a16; --surface-2: #162019; --surface-3: #1b2620; --border: #243128; --skeleton: #182219;
+}
+[data-preset='taiga'][data-tone='2'] {
+  --bg: #121a16; --surface: #18231d; --surface-2: #1e2a23; --surface-3: #243229; --border: #2c3d32; --skeleton: #212e26;
+}
+
+/* ---------- Пресет 4: Бумага (светлый, тёплая бумага) ---------- */
+[data-preset='paper'] {
+  --bg: #f2f0e9;
+  --surface: #fbfaf6;
+  --surface-2: #edeadf;
+  --surface-3: #e4e0d2;
+  --border: #dcd7c8;
+  --border-strong: #c6c0ae;
+  --text: #21261f;
+  --text-2: #5b6157;
+  --text-3: #8b9086;
+  --accent: #14795a;
+  --accent-ink: #f6fbf8;
+  --income: #0e8757;
+  --expense: #c74c3f;
+  --warn: #a87718;
+  --info: #3e6d99;
+  --skeleton: #e7e3d7;
+  --overlay: rgba(31, 34, 27, 0.4);
+  --shadow-1: 0 1px 2px rgba(60, 56, 40, 0.1);
+  --shadow-2: 0 6px 18px rgba(60, 56, 40, 0.12);
+  --shadow-3: 0 18px 44px rgba(60, 56, 40, 0.18);
+  --scroll-thumb: #cfc9b8;
+}
+[data-preset='paper'][data-tone='1'] {
+  --bg: #eceada; --surface: #f8f6ef; --surface-2: #e5e1d3; --surface-3: #dcd7c5; --border: #d2ccba; --skeleton: #e0dbc9;
+}
+[data-preset='paper'][data-tone='2'] {
+  --bg: #f7f5f0; --surface: #fdfcf9; --surface-2: #f0eee5; --surface-3: #e8e5d9; --border: #e2decf; --skeleton: #ebe8dc;
+}
+
+/* Производные от акцента */
+:root {
+  --accent-final: var(--accent-user, var(--accent));
+  --accent-ink-final: var(--accent-ink-user, var(--accent-ink));
+  --accent-soft: color-mix(in srgb, var(--accent-final) 14%, transparent);
+  --accent-hover: color-mix(in srgb, var(--accent-final) 88%, var(--text));
+  --income-soft: color-mix(in srgb, var(--income) 13%, transparent);
+  --expense-soft: color-mix(in srgb, var(--expense) 13%, transparent);
+  --warn-soft: color-mix(in srgb, var(--warn) 14%, transparent);
+}
+
+/* Фикс: у «Тайги» слишком светлый ink не нужен */
+[data-preset='taiga'] { --accent-ink: #04231a; }

@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finora — личные финансы на вашем компьютере</title>
+  <meta name="description" content="Finora — локальное приложение для macOS: все банковские операции в одном интерфейсе, понятная статистика и цели. Данные не покидают ваш компьютер." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='9' fill='%231f1a12' stroke='%23d4a542' stroke-width='2'/%3E%3Cg fill='%23d4a542'%3E%3Cpath d='M8 17.2h6.4l1.3 3.8H6.7z'/%3E%3Cpath d='M17.6 17.2h6.4l1.3 3.8H16.3z'/%3E%3Cpath d='M12.8 10.4h6.4l1.3 3.8H11.5z'/%3E%3C/g%3E%3C/svg%3E" />
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap header-in">
+    <a class="brand" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect x="1.5" y="1.5" width="29" height="29" rx="9" fill="#1f1a12" stroke="#d4a542" stroke-width="1.8"/><g fill="#d4a542"><path d="M8 17.2h6.4l1.3 3.8H6.7z"/><path d="M17.6 17.2h6.4l1.3 3.8H16.3z"/><path d="M12.8 10.4h6.4l1.3 3.8H11.5z"/></g></svg>
+      Finora
+    </a>
+    <button class="burger" aria-label="Меню" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav-links">
+      <a href="#problem">Проблема</a>
+      <a href="#how">Как работает</a>
+      <a href="#interface">Интерфейс</a>
+      <a href="../app/dist/index.html" target="_blank" rel="noopener">Прототип</a>
+      <a href="privacy.html">Приватность</a>
+      <a href="tech.html">Технологии</a>
+      <a class="nav-dl" href="downloads/Finora.dmg" download><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v10.5M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg> Скачать для Mac</a>
+      </nav>
+    <a class="btn btn-primary btn-sm header-cta" href="downloads/Finora.dmg" download title="Скачать установщик для macOS"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v10.5M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg> Скачать для Mac</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><i></i>Локальный анализ личных финансов · macOS</span>
+      <h1>Все деньги — в одном окне. Данные — <em>только у вас</em>.</h1>
+      <p class="hero-sub">Finora собирает операции из банка, раскладывает их по категориям и показывает честную картину: куда уходят деньги и как накопить на важное. Всё — локально, без облаков.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="../app/dist/index.html" target="_blank" rel="noopener">
+          Смотреть прототип
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4h6v6M20 4l-8.5 8.5M19 13.5V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4.5"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#how">Как это работает</a>
+      </div>
+      <div class="hero-note">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3.2 19 6v5.3c0 4.5-2.9 7.9-7 9.5-4.1-1.6-7-5-7-9.5V6z"/></svg>
+        Демонстрация на синтетических данных — 1 000+ реалистичных операций за 12 месяцев
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="mini-dash">
+        <div class="mini-head">
+          <span class="mini-title">Finora · Главная</span>
+          <span class="mini-badge">синхронизировано</span>
+        </div>
+        <div>
+          <span class="mini-balance num" id="mini-balance">0,00</span>
+          <span class="mini-delta num">+28 513,82 ₽</span>
+        </div>
+        <svg class="mini-spark" viewBox="0 0 320 84" width="100%" height="84" preserveAspectRatio="none">
+          <path class="area" d="M4 62 C 30 58, 48 30, 72 30 S 120 36, 150 34 S 240 40, 316 42 L 316 84 L 4 84 Z"/>
+          <path class="line" d="M4 62 C 30 58, 48 30, 72 30 S 120 36, 150 34 S 240 40, 316 42"/>
+          <circle cx="316" cy="42" r="3.4" fill="var(--accent)"/>
+        </svg>
+        <div class="mini-bars">
+          <i class="up" style="height:52%"></i><i class="down" style="height:34%"></i><i class="up" style="height:64%"></i>
+          <i class="down" style="height:44%"></i><i class="up" style="height:70%"></i><i class="down" style="height:38%"></i>
+          <i class="up" style="height:58%"></i><i class="down" style="height:30%"></i><i class="up" style="height:74%"></i>
+          <i class="down" style="height:48%"></i><i class="up" style="height:62%"></i><i class="down" style="height:40%"></i>
+        </div>
+        <div class="mini-tx" id="tx-feed"></div>
+      </div>
+      <div class="float-chip chip-lock">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+        <span><b>Приватность</b><span>данные на вашем Mac</span></span>
+      </div>
+      <div class="float-chip chip-ai">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9.5 2.5V5M14.5 2.5V5M9.5 19v2.5M14.5 19v2.5M2.5 9.5H5M2.5 14.5H5M19 9.5h2.5M19 14.5h2.5"/></svg>
+        <span><b>Локальный AI</b><span>анализ без облака — уже работает</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ingot-divider" aria-hidden="true">
+  <svg viewBox="0 0 58 22"><g fill="#d4a542"><path d="M4 12h11l1.9 9H2.1z" opacity=".55"/><path d="M23.5 2h11l1.9 9H21.6z"/><path d="M43 12h11l1.9 9H41.1z" opacity=".55"/></g></svg>
+</div>
+
+<!-- ================= ПРОБЛЕМА ================= -->
+<section id="problem">
+  <div class="wrap">
+    <span class="sec-eyebrow reveal">Проблема</span>
+    <h2 class="reveal">Деньги есть везде. Понимания — нигде.</h2>
+    <p class="sec-sub reveal d1">У современного человека операции в двух-трёх банках и десятке сервисов. Приложения банков показывают список, но не картину — а сторонние агрегаторы просят доступ к данным навсегда.</p>
+    <div class="cards3">
+      <div class="p-card reveal d1">
+        <div class="p-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01" stroke-width="2.4"/></svg>
+        </div>
+        <h3>Куча операций, ноль смысла</h3>
+        <p>Банковское приложение показывает выписку — длинный список, который никто не перечитывает. Оно не отвечает на главный вопрос: на что реально уходят деньги и что с этим делать. Переводы, подписки, кэшбэк и возвраты смешиваются в один поток, и картина месяца собирается уже вручную — в таблице или в голове.</p>
+        <div class="p-foot"><div class="p-stat"><b>300+</b> операций в месяц у активного пользователя</div></div>
+      </div>
+      <div class="p-card reveal d2">
+        <div class="p-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M10 14.2a4.2 4.2 0 0 1 0-6l2.3-2.3a4.2 4.2 0 0 1 6 6L17 13.2"/><path d="M14 9.8a4.2 4.2 0 0 1 0 6l-2.3 2.3a4.2 4.2 0 0 1-6-6L7 10.8"/></svg>
+        </div>
+        <h3>Агрегаторы забирают данные</h3>
+        <p>Сервисы учёта финансов работают через облако: выписки хранятся на чужих серверах, а «умный анализ» — это отправка ваших данных сторонней модели.</p>
+        <div class="p-stat"><b>100%</b> операций уходят на чужой сервер</div>
+      </div>
+      <div class="p-card reveal d3">
+        <div class="p-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.2a2.4 2.4 0 1 1 3.3 2.2c-.66.28-.95.77-.95 1.5v.4M12 16.6h.01" stroke-width="2.2"/></svg>
+        </div>
+        <h3>ИИ требует приватности в жертву</h3>
+        <p>Польза от AI-анализа расходов очевидна, но облачные модели получают полную финансовую историю. Это цена, которую платить не хочется.</p>
+        <div class="p-stat"><b>0</b> гарантий, что данные не используются для обучения</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= РЕШЕНИЕ ================= -->
+<section class="solution">
+  <div class="wrap">
+    <span class="sec-eyebrow reveal">Решение</span>
+    <h2 class="reveal">Finora — финансовый штаб на вашем компьютере</h2>
+    <p class="sec-sub reveal d1">Настоящее приложение для macOS. Операции приходят из банка, обрабатываются локально и превращаются в понятную статистику и цели.</p>
+    <div class="sol-grid">
+      <div class="sol-item reveal d1">
+        <div class="sol-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 10 12 4l8 6"/><path d="M5.2 10v8M9.7 10v8M14.3 10v8M18.8 10v8M3.5 20.5h17"/></svg></div>
+        <div>
+          <h3>Все операции в одном месте</h3>
+          <p>История из Т-Банка за год: покупки, переводы, подписки, кэшбэк. Поиск, фильтры, любой период — и всё это в едином интерфейсе.</p>
+        </div>
+      </div>
+      <div class="sol-item reveal d2">
+        <div class="sol-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9h-9V3z"/><path d="M14.6 3.6A9 9 0 0 1 20.4 9.4"/></svg></div>
+        <div>
+          <h3>Статистика без усилий</h3>
+          <p>Каждая операция автоматически получает категорию. Finora показывает структуру расходов, динамику по месяцам и крупные траты.</p>
+        </div>
+      </div>
+      <div class="sol-item reveal d3">
+        <div class="sol-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><path d="M12 12h.01" stroke-width="2.6"/></svg></div>
+        <div>
+          <h3>Цели вместо тревоги</h3>
+          <p>Копить на ноутбук, поездку или квартиру — с видимым прогрессом и понятным темпом «столько-то в месяц». В будущем — советы AI, где сэкономить.</p>
+        </div>
+      </div>
+      <div class="sol-item reveal d4">
+        <div class="sol-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9.5 2.5V5M14.5 2.5V5M9.5 19v2.5M14.5 19v2.5M2.5 9.5H5M2.5 14.5H5M19 9.5h2.5M19 14.5h2.5"/></svg></div>
+        <div>
+          <h3>Локальный AI на Mac</h3>
+          <p>Локальная модель отвечает на любые финансовые вопросы прямо на Mac: подсказывает, где сэкономить под конкретную цель, и разбирает жизненные ситуации — без отправки данных куда-либо.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= КАК РАБОТАЕТ ================= -->
+<section id="how">
+  <div class="wrap">
+    <span class="sec-eyebrow reveal">Как работает</span>
+    <h2 class="reveal">Три шага от банка до понимания</h2>
+    <div class="flow">
+      <div class="flow-step reveal d1">
+        <span class="flow-num">01 · Источник</span>
+        <h3>Банк</h3>
+        <p>Т-Банк отдаёт историю операций. В прототипе — реалистичный демонстрационный источник с годом синтетических данных.</p>
+      </div>
+      <div class="flow-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h15M13.5 6l6 6-6 6"/></svg></div>
+      <div class="flow-step accent reveal d2">
+        <span class="flow-num">02 · Обработка</span>
+        <h3>Finora</h3>
+        <p>Нормализация и классификация прямо на компьютере: категории, переводы между счетами, очередь «Разобрать» для неясных операций.</p>
+      </div>
+      <div class="flow-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h15M13.5 6l6 6-6 6"/></svg></div>
+      <div class="flow-step reveal d3">
+        <span class="flow-num">03 · Результат</span>
+        <h3>Понимание</h3>
+        <p>Дашборд, аналитика, цели и наблюдения о привычках. Позже — локальная AI-модель, которая подскажет, где сэкономить.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ПРИВАТНОСТЬ ================= -->
+<section class="priv" id="privacy">
+  <div class="wrap priv-grid">
+    <div>
+      <span class="sec-eyebrow reveal">Приватность</span>
+      <h2 class="reveal">Финансы — самое личное.<br/>И оно остаётся у вас.</h2>
+      <div class="priv-list">
+        <div class="priv-item reveal d1">
+          <span class="ok"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <span><b>Локальное хранение</b><span>Операции и настройки живут только на вашем компьютере. Нет серверов, нет облака, нет аккаунта.</span></span>
+        </div>
+        <div class="priv-item reveal d2">
+          <span class="ok"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <span><b>Минимальный доступ к банку</b><span>Только чтение операций. Finora не может платить, а пароль от банка не запрашивается вовсе.</span></span>
+        </div>
+        <div class="priv-item reveal d3">
+          <span class="ok"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <span><b>Аналитика на месте</b><span>Все расчёты выполняются на вашем Mac. Даже статистика «обычно вы тратите так» считается локально.</span></span>
+        </div>
+        <div class="priv-item reveal d4">
+          <span class="ok"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <span><b>Облачный AI выключен</b><span>Не «выключен по умолчанию», а не предусмотрен вовсе. Будущий AI будет работать локально — или никак.</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="priv-card reveal d2">
+      <div class="priv-shield">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3.2 19 6v5.3c0 4.5-2.9 7.9-7 9.5-4.1-1.6-7-5-7-9.5V6z"/><path d="M9 12l2.2 2.2L15.5 9.7"/></svg>
+      </div>
+      <h3>Privacy-first. Local-first.</h3>
+      <p>Это не настройка, а принцип архитектуры: данные не покидают устройство, потому что приложению просто некуда их отправлять.</p>
+      <div class="priv-counters">
+        <div class="priv-counter"><div class="v">0</div><div class="l">серверов</div></div>
+        <div class="priv-counter"><div class="v">0</div><div class="l">аккаунтов</div></div>
+        <div class="priv-counter"><div class="v">1</div><div class="l">владелец данных</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ИНТЕРФЕЙС ================= -->
+<section id="interface">
+  <div class="wrap">
+    <span class="sec-eyebrow reveal">Интерфейс</span>
+    <h2 class="reveal">Спокойный, тёмный, настоящий</h2>
+    <p class="sec-sub reveal d1">Дизайн в духе лучших банковских приложений: много воздуха, аккуратная типографика, живые графики. Четыре темы с полной настройкой цветов.</p>
+
+    <div class="shots">
+      <div class="shot-row">
+        <div class="shot-img reveal"><img src="assets/app-dashboard.png" alt="Главный экран Finora: баланс, доходы, расходы, график динамики" loading="lazy" /></div>
+        <div class="shot-text reveal d1">
+          <h3>Дашборд</h3>
+          <p>Главные цифры за любой период: баланс, доходы, расходы и свободные деньги.</p>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>График динамики баланса и расходы по категориям</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Наблюдения: подписки, норма сбережений, привычки</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Период — месяц, квартал, год или свой диапазон</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="shot-row flip">
+        <div class="shot-text reveal d1">
+          <h3>Разобрать</h3>
+          <p>Finora честно говорит «не знаю», когда не может определить категорию. Один клик — и операция на своём месте.</p>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>«Перевод 25 000 ₽ — на что потрачены?»</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Вариант «это перевод между моими счетами»</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Счётчик непонятных операций всегда на виду</li>
+          </ul>
+        </div>
+        <div class="shot-img reveal"><img src="assets/app-review.png" alt="Экран «Разобрать»: очередь операций без категории" loading="lazy" /></div>
+      </div>
+
+      <div class="shot-row">
+        <div class="shot-img reveal"><img src="assets/app-analytics.png" alt="Аналитика: структура расходов, динамика по месяцам, крупные траты" loading="lazy" /></div>
+        <div class="shot-text reveal d1">
+          <h3>Аналитика</h3>
+          <p>Структура расходов, динамика за 12 месяцев, крупные траты и сравнение периодов.</p>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Сравнение «этот месяц против прошлого»</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Источники дохода и средний чек</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Наблюдения о привычках и подписках</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="shot-row flip">
+        <div class="shot-text reveal d1">
+          <h3>Ваш стиль</h3>
+          <p>Четыре темы: Слиток, Полночь, Тайга и светлая Бумага. Акцент, скругления и плотность настраиваются — с историей изменений и своими пресетами.</p>
+          <ul>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Свой акцентный цвет из палитры или пипеткой</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Откат любого изменения внешнего вида</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Сохранение своих пресетов в один клик</li>
+          </ul>
+        </div>
+        <div class="shot-img reveal"><img src="assets/app-settings-dark.png" alt="Настройки внешнего вида в тёмной теме «Слиток»" loading="lazy" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AI ================= -->
+<section class="solution" id="ai">
+  <div class="wrap">
+    <span class="sec-eyebrow reveal">Локальный AI — уже в приложении</span>
+    <h2 class="reveal">Умный анализ, который ничего не знает о вас за пределами Mac</h2>
+    <div class="ai-grid">
+      <div class="reveal d1">
+        <p style="color:var(--text-2);font-size:15.5px">Категории расставляет быстрый движок правил: он предсказуем, работает офлайн и не ошибается молча — спорные операции попадают в очередь «Разобрать».</p>
+        <p style="color:var(--text-2);font-size:15.5px;margin-top:16px">Локальная языковая модель уже работает: модель Qwen3.5-4B докачивается одной кнопкой из настроек и отвечает прямо на Mac. Чат-советник свободно разбирает жизненные ситуации («трачу 10 тысяч в неделю на подарки — это нормально?»), считает план накопления под конкретную цель и стримит ответ по мере генерации. Цифры всегда считает приложение — модель только формулирует вывод, поэтому не выдумывает суммы.</p>
+        <p style="color:var(--text-3);font-size:13.5px;margin-top:16px">Без модели чат продолжает отвечать встроенными правилами — и честно пишет об этом перед ответом. Облачный AI не предусмотрен вовсе.</p>
+      </div>
+      <div class="ai-card reveal d2">
+        <div class="ai-row"><span class="ai-dot on"></span>Правила по названию операции<span class="st now">работает</span></div>
+        <div class="ai-row"><span class="ai-dot on"></span>Очередь «Разобрать» для неясных<span class="st now">работает</span></div>
+        <div class="ai-row"><span class="ai-dot on"></span>Локальная модель Qwen3.5-4B (llama.cpp)<span class="st now">работает</span></div>
+        <div class="ai-row"><span class="ai-dot on"></span>Свободный чат и советы по целям<span class="st now">работает</span></div>
+        <div class="ai-row"><span class="ai-dot off"></span>Облачные AI-сервисы<span class="st never">выключено</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ПОДРОБНЕЕ ================= -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="more-grid">
+      <a class="more-card reveal" href="privacy.html">
+        <span class="more-ico">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3.2 19 6v5.3c0 4.5-2.9 7.9-7 9.5-4.1-1.6-7-5-7-9.5V6z"/></svg>
+        </span>
+        <span>
+          <h3>Приватность — подробно</h3>
+          <p>Что хранится на вашем Mac, чего у Finora нет и не будет, как устроен доступ к банку.</p>
+        </span>
+        <span class="more-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h15M13.5 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+      <a class="more-card reveal d1" href="tech.html">
+        <span class="more-ico">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9.5 2.5V5M14.5 2.5V5M9.5 19v2.5M14.5 19v2.5M2.5 9.5H5M2.5 14.5H5M19 9.5h2.5M19 14.5h2.5"/></svg>
+        </span>
+        <span>
+          <h3>Технологии и планы</h3>
+          <p>Слои конвейера данных, стек, дорожная карта: банк — этап 2, локальный AI — этап 3.</p>
+        </span>
+        <span class="more-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h15M13.5 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Посмотрите на свои деньги глазами Finora</h2>
+        <p>Интерактивный прототип с годом реалистичных операций: подключите демо-банк, разберите операции, настройте тему под себя.</p>
+      </div>
+      <div class="cta-actions">
+        <div class="cta-buttons">
+          <a class="btn btn-lg" href="../app/dist/index.html" target="_blank" rel="noopener">
+            Открыть прототип
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4h6v6M20 4l-8.5 8.5M19 13.5V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4.5"/></svg>
+          </a>
+          <a class="btn btn-lg btn-band-ghost" href="downloads/Finora.dmg" download>
+            Скачать для Mac
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v10.5M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg>
+          </a>
+        </div>
+        <span class="cta-meta">macOS 13+ · Apple Silicon · DMG 6,2 МБ · версия 0.9.0 · первый запуск: правый клик по приложению → «Открыть»</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= КОМАНДА ================= -->
+<section id="team" style="padding-top:0">
+  <div class="wrap">
+    <span class="sec-eyebrow reveal">Автор</span>
+    <h2 class="reveal">Кто делает Finora</h2>
+    <div class="team-card reveal d1">
+      <div class="team-ava">ДР</div>
+      <div>
+        <h3>Рахматуллин Динар</h3>
+        <div class="team-role">Идея, дизайн, разработка</div>
+        <p>Студент 1 курса кафедры ИУ5, МГТУ им. Н.Э. Баумана. Придумал Finora, потому что устал не понимать, куда уходят деньги, — и не хотел отдавать финансовую историю облачным сервисам ради красивых графиков.</p>
+        <div class="team-links">
+          <a class="tl" href="mailto:dinar.rahmatulin2001@gmail.com">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+            dinar.rahmatulin2001@gmail.com
+          </a>
+          <a class="tl" href="https://t.me/zxcghoulkaneki" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 4.5 3.8 11.2c-.9.35-.85 1.1.05 1.35l4.2 1.3 1.6 4.9c.25.8.8.9 1.35.35l2.3-2.2 4.3 3.15c.75.55 1.5.2 1.7-.75L22 5.7c.25-1.15-.4-1.6-1-1.2z"/></svg>
+            @zxcghoulkaneki
+          </a>
+          <a class="tl" href="https://github.com/fashffffffff" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+            github.com/fashffffffff
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><rect x="1.5" y="1.5" width="29" height="29" rx="9" fill="#1f1a12" stroke="#d4a542" stroke-width="1.8"/><g fill="#d4a542"><path d="M8 17.2h6.4l1.3 3.8H6.7z"/><path d="M17.6 17.2h6.4l1.3 3.8H16.3z"/><path d="M12.8 10.4h6.4l1.3 3.8H11.5z"/></g></svg>
+          Finora
+        </a>
+        <p>Локальный анализ личных финансов для macOS. Приватность — не функция, а архитектура.</p>
+      </div>
+      <div class="foot-col">
+        <div class="foot-h">Продукт</div>
+        <a href="#problem">Проблема</a>
+        <a href="#how">Как работает</a>
+        <a href="#interface">Интерфейс</a>
+      <a href="../app/dist/index.html" target="_blank" rel="noopener">Прототип</a>
+        <a href="downloads/Finora.dmg" download>Скачать для Mac (dmg)</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-h">Подробнее</div>
+        <a href="privacy.html">Приватность</a>
+        <a href="tech.html">Технологии</a>
+        <a href="tech.html#roadmap">Планы</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-h">Контакты</div>
+        <a href="mailto:dinar.rahmatulin2001@gmail.com">dinar.rahmatulin2001@gmail.com</a>
+        <a href="https://t.me/zxcghoulkaneki" target="_blank" rel="noopener">Telegram · @zxcghoulkaneki</a>
+        <a href="https://github.com/fashffffffff" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Finora · Рахматуллин Динар, ИУ5 · МГТУ им. Н.Э. Баумана</span>
+      <span>Прототип работает на демонстрационных данных</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
