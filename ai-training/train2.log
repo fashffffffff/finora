@@ -1,0 +1,22 @@
+Loading pretrained model
+Loading datasets
+Training
+Trainable parameters: 0.096% (4.058M/4205.750M)
+Starting training..., iters: 120
+Calculating loss...:   0%|          | 0/9 [00:00<?, ?it/s]Calculating loss...:  11%|█         | 1/9 [00:00<00:04,  1.64it/s]Calculating loss...:  22%|██▏       | 2/9 [00:01<00:04,  1.67it/s]Calculating loss...:  33%|███▎      | 3/9 [00:01<00:03,  1.68it/s]Calculating loss...:  44%|████▍     | 4/9 [00:02<00:02,  1.68it/s]Calculating loss...:  56%|█████▌    | 5/9 [00:02<00:02,  1.69it/s]Calculating loss...:  67%|██████▋   | 6/9 [00:03<00:01,  1.69it/s]Calculating loss...:  78%|███████▊  | 7/9 [00:04<00:01,  1.68it/s]Calculating loss...:  89%|████████▉ | 8/9 [00:04<00:00,  1.63it/s]Calculating loss...: 100%|██████████| 9/9 [00:05<00:00,  1.70it/s]Calculating loss...: 100%|██████████| 9/9 [00:05<00:00,  1.68it/s]
+Iter 1: Val loss 2.509, Val took 5.362s
+Iter 20: Train loss 1.413, Learning Rate 1.000e-05, It/sec 0.188, Tokens/sec 71.190, Trained Tokens 7556, Peak mem 8.595 GB
+Iter 40: Train loss 0.567, Learning Rate 1.000e-05, It/sec 0.174, Tokens/sec 64.496, Trained Tokens 14965, Peak mem 8.595 GB
+Iter 40: Saved adapter weights to adapters/finora-lora2/adapters.safetensors and adapters/finora-lora2/0000040_adapters.safetensors.
+Calculating loss...:   0%|          | 0/9 [00:00<?, ?it/s]Calculating loss...:  11%|█         | 1/9 [00:01<00:13,  1.66s/it]Calculating loss...:  22%|██▏       | 2/9 [00:02<00:09,  1.34s/it]Calculating loss...:  33%|███▎      | 3/9 [00:03<00:06,  1.16s/it]Calculating loss...:  44%|████▍     | 4/9 [00:04<00:05,  1.03s/it]Calculating loss...:  56%|█████▌    | 5/9 [00:05<00:03,  1.04it/s]Calculating loss...:  67%|██████▋   | 6/9 [00:06<00:02,  1.15it/s]Calculating loss...:  78%|███████▊  | 7/9 [00:07<00:01,  1.12it/s]Calculating loss...:  89%|████████▉ | 8/9 [00:07<00:00,  1.12it/s]Calculating loss...: 100%|██████████| 9/9 [00:08<00:00,  1.11it/s]Calculating loss...: 100%|██████████| 9/9 [00:08<00:00,  1.02it/s]
+Iter 60: Val loss 0.330, Val took 8.838s
+Iter 60: Train loss 0.433, Learning Rate 1.000e-05, It/sec 0.233, Tokens/sec 88.450, Trained Tokens 22566, Peak mem 8.611 GB
+Iter 80: Train loss 0.316, Learning Rate 1.000e-05, It/sec 0.247, Tokens/sec 94.235, Trained Tokens 30192, Peak mem 8.611 GB
+Iter 80: Saved adapter weights to adapters/finora-lora2/adapters.safetensors and adapters/finora-lora2/0000080_adapters.safetensors.
+Iter 100: Train loss 0.294, Learning Rate 1.000e-05, It/sec 0.254, Tokens/sec 94.026, Trained Tokens 37607, Peak mem 8.611 GB
+Calculating loss...:   0%|          | 0/9 [00:00<?, ?it/s]Calculating loss...:  11%|█         | 1/9 [00:01<00:09,  1.23s/it]Calculating loss...:  22%|██▏       | 2/9 [00:02<00:07,  1.09s/it]Calculating loss...:  33%|███▎      | 3/9 [00:02<00:05,  1.10it/s]Calculating loss...:  44%|████▍     | 4/9 [00:03<00:04,  1.08it/s]Calculating loss...:  56%|█████▌    | 5/9 [00:05<00:04,  1.02s/it]Calculating loss...:  67%|██████▋   | 6/9 [00:05<00:02,  1.00it/s]Calculating loss...:  78%|███████▊  | 7/9 [00:06<00:01,  1.03it/s]Calculating loss...:  89%|████████▉ | 8/9 [00:07<00:00,  1.06it/s]Calculating loss...: 100%|██████████| 9/9 [00:08<00:00,  1.10it/s]Calculating loss...: 100%|██████████| 9/9 [00:08<00:00,  1.04it/s]
+Iter 120: Val loss 0.228, Val took 8.642s
+Iter 120: Train loss 0.197, Learning Rate 1.000e-05, It/sec 0.247, Tokens/sec 96.266, Trained Tokens 45410, Peak mem 8.611 GB
+Iter 120: Saved adapter weights to adapters/finora-lora2/adapters.safetensors and adapters/finora-lora2/0000120_adapters.safetensors.
+Saved final weights to adapters/finora-lora2/adapters.safetensors.
+TRAIN_EXIT=0
