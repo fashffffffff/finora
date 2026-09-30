@@ -5,7 +5,7 @@
 
 - Версия прототипа: **0.9.0**
 - Автор: Рахматуллин Динар · ИУ5, МГТУ им. Н.Э. Баумана
-- Контакты: dinar.rahmatulin2001@gmail.com · Telegram `@zxcghoulkaneki` · [GitHub](https://github.com/fashffffffff)
+- Контакты: dinar.rahmatullin2001@gmail.com · Telegram `@zxcghoulkaneki` · [GitHub](https://github.com/fashffffffff)
 
 ## Состав репозитория
 
