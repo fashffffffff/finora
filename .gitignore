@@ -20,3 +20,10 @@ ai-training/adapters/*/0000*_adapters.safetensors
 ai-training/adapters/finora-lora/
 ai-training/adapters/finora-lora2/
 ai-training/adapters/finora-lora3/
+
+# внутренние документы и слайды — не часть публичного репозитория
+/strategy/
+/presentation/
+/DESIGN_SYSTEM.md
+/SPEC.md
+/TODO.md
